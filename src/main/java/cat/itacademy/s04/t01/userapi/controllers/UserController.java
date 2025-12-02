@@ -2,10 +2,8 @@ package cat.itacademy.s04.t01.userapi.controllers;
 
 import cat.itacademy.s04.t01.userapi.entities.User;
 import org.apache.logging.log4j.message.StringFormattedMessage;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,4 +30,17 @@ public class UserController {
 
         return user;
     }
+
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public UserRequest getUserById(@PathVariable UUID id) {
+        UserRequest userRequest = null;
+        if (userList.contains(id)) {
+            userList.stream()
+                    .filter(user -> user.getId().compareTo(id) > 0)
+                    .;
+        }
+        return userRequest;
+    }
+
 }
