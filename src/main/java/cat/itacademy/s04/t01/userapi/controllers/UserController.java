@@ -7,11 +7,16 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @RestController
 public class UserController {
     static List<User> userList = new ArrayList<>();
+
+    public static List<User> getUserList() {
+        return userList;
+    }
 
     @GetMapping("/users")
     public Object getUserList(@RequestParam(required = false) String userName) {
@@ -20,7 +25,7 @@ public class UserController {
             return userList;
         }
         return userList.stream()
-                .filter(user -> user.getName().equalsIgnoreCase(userName))
+                .filter(user -> user.getName().contains(userName.toLowerCase(Locale.ROOT)))
                 .findFirst()
                 .map(user -> new UserRequest(user.getName(), user.getEmail()))
                 .orElseThrow(() ->
@@ -34,7 +39,7 @@ public class UserController {
         String name = userData.userName();
         String email = userData.userEmail();
 
-        User user = new User(id, name, email);
+        User user = new User( name, email);
 
         userList.add(user);
 
