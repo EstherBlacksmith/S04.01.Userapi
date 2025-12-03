@@ -14,8 +14,18 @@ public class UserController {
     static List<User> userList = new ArrayList<>();
 
     @GetMapping("/users")
-    public List<User> getUserList() {
-        return userList;
+    public Object getUserList(@RequestParam(required = false) String userName) {
+
+        if (userName == null) {
+            return userList;
+        }
+        return userList.stream()
+                .filter(user -> user.getName().equalsIgnoreCase(userName))
+                .findFirst()
+                .map(user -> new UserRequest(user.getName(), user.getEmail()))
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND, "User not found"));
     }
 
     @PostMapping("/users")
@@ -23,6 +33,7 @@ public class UserController {
         UUID id = UUID.randomUUID();
         String name = userData.userName();
         String email = userData.userEmail();
+
         User user = new User(id, name, email);
 
         userList.add(user);
