@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Email;
+import entities.Name;
 import entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -36,8 +38,8 @@ public class UserController {
     @PostMapping("/users")
     public User postUser(@RequestBody UserRequest userData) {
         UUID id = UUID.randomUUID();
-        String name = userData.userName();
-        String email = userData.userEmail();
+        Name name = new Name(userData.userName());
+        Email email = new Email(userData.userEmail());
 
         User user = new User( name, email);
 

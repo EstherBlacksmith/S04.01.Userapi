@@ -4,22 +4,22 @@ import java.util.UUID;
 
 public class User {
     private UUID id;
-    private String name ;
-    private String email ;
+    private Name name ;
+    private Email email ;
 
 
-    public User(String name, String email) {
+    public User(Name name, Email email) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.email = email;
     }
 
     public String getEmail() {
-        return email;
+        return email.getValue();
     }
 
     public String getName() {
-        return name;
+        return name.getValue();
     }
 
     public UUID getId() {

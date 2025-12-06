@@ -1,3 +1,5 @@
+import entities.Email;
+import entities.Name;
 import entities.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -18,8 +20,8 @@ class InMemoryUserRepositoryTest {
 
     @BeforeAll
     void initializingVariablesValues() {
-        this.user1 = new User("Pepito", "pepito@gmail.com");
-        User user2 = new User("Pepita","pepita@gmail.com");
+        this.user1 = new User(new Name("Pepito"), new Email("pepito@gmail.com"));
+        User user2 = new User(new Name("Pepita"),new Email("pepita@gmail.com"));
         inMemoryUserRepository = new InMemoryUserRepository();
         inMemoryUserRepository.save(user1);
         inMemoryUserRepository.save(user2);
