@@ -1,6 +1,6 @@
-package cat.itacademy.s04.t01.userapi.controllers;
+package controllers;
 
-import cat.itacademy.s04.t01.userapi.entities.User;
+import entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;

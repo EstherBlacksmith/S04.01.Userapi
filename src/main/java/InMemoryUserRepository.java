@@ -1,6 +1,4 @@
-package cat.itacademy.s04.t01.userapi;
-
-import cat.itacademy.s04.t01.userapi.entities.User;
+import entities.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public class InMemoryUserRepository implements UserRepository{
+public class InMemoryUserRepository implements UserRepository {
     static List<User> userList = new ArrayList<>();
 
     @Override

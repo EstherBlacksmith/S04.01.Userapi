@@ -1,4 +1,4 @@
-package cat.itacademy.s04.t01.userapi.entities;
+package entities;
 
 import java.util.UUID;
 

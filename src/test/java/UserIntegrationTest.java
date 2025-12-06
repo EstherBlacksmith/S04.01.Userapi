@@ -1,6 +1,6 @@
-package cat.itacademy.s04.t01.userapi.controllers;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import controllers.UserController;
+import controllers.UserRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
