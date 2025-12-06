@@ -23,16 +23,20 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findById(UUID id) {
-        return Optional.empty();
+        return userList.stream()
+                .filter(user -> user.getId().compareTo(id) > 0)
+                .findFirst();
     }
 
     @Override
     public List<User> searchByName(String name) {
-        return List.of();
+        return userList.stream()
+                .filter(user -> user.getName().contains(name) ).toList();
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return false;
+        return userList.stream()
+                .anyMatch(user -> user.getEmail().equals(email));
     }
 }
