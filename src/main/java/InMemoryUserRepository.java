@@ -12,12 +12,13 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public User save(User user) {
-        return null;
+        userList.add(user);
+        return user;
     }
 
     @Override
     public List<User> findAll() {
-        return List.of();
+        return List.copyOf(userList);
     }
 
     @Override
